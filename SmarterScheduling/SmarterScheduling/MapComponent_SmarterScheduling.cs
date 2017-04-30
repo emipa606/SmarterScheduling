@@ -381,7 +381,8 @@ namespace SmarterScheduling
                             p.timetable.SetAssignment(i, TimeAssignmentDefOf.Anything);
                         }
 
-                        considerReleasingPawn(p);
+                        //restrictPawnToPsyche(p);
+                        //considerReleasingPawn(p);
                         if (anyoneNeedingTreatment && isDoctor) { doctorNotLazy(p); }
                     }
                     else if (p.needs.mood.CurLevel < MOOD_THRESH_CRITICAL)
@@ -505,6 +506,12 @@ namespace SmarterScheduling
                     {
                         setPawnState(p, PawnState.WORK);
                         considerReleasingPawn(p);
+                    }
+
+                    if (hungry && !sleeping)
+                    {
+                        //restrictPawnToPsyche(p);
+                        //considerReleasingPawn(p);
                     }
 
                     if (layingDown && !sleeping && !needsTreatment)
